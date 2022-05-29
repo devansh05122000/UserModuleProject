@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Admin Section</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/assets/img/favicon.png" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: iPortfolio - v3.7.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+    {{#each result}}
+    <!-- ======= Mobile nav toggle button ======= -->
+    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="d-flex flex-column">
+
+            <div class="profile">
+                <img src="data:image/jpeg;base64,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" alt="" class="img-fluid rounded-circle">
+                <h1 class="text-light"><a href="index.html">{{this.name}}</a></h1>
+                <div class="social-links mt-3 text-center">
+                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </div>
+
+            <nav id="navbar" class="nav-menu navbar">
+                <ul>
+                    <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i>
+                            <span>Home</span></a></li>
+                    <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a>
+                    </li>
+                    <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i>
+                            <span>Team</span></a></li>
+                    <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
+                            <span>Projects</span></a></li>
+                    <div class=" d-flex justify-content-end">
+                        <li><a href="/logout" type="button" class="btn btn-primary align-self-center">Logout</a></li>
+                    </div>
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="hero-container" data-aos="fade-in">
+            <h1>{{this.name}}</h1>
+            <p>Hi <span class="typed" data-typed-items="Admin"></span></p>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>About</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4" data-aos="fade-right">
+                        <img src="data:image/jpeg;base64,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" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+                        <h3>{{this.role}}</h3>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Name: </strong>
+                                        <span>{{this.name}}</span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Email Id: </strong>
+                                        <span>{{this.id}}</span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Phone: </strong>
+                                        <span>{{this.contact}}</span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Address: </strong>
+                                        <span>{{this.address}}</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Role: </strong>
+                                        <span>{{this.role}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End About Section -->
+
+        <!-- ======= Facts Section ======= -->
+    <section id="facts" class="facts">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Projects Assigned</h2>
+          {{!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
+        </div>
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Completed</strong></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="count-box">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Pending</strong></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="count-box">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Archieved</strong></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Facts Section -->
+
+        
+        <!-- ======= Resume Section ======= -->
+        <section id="resume" class="resume">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Team</h2>
+                    <p>Hi {{this.name}}, these employees are in your team!   <a href="/employees">Click Here</a></p>
+                </div>
+            </div>
+        </section><!-- End Resume Section -->
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio section-bg">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Projects</h2>
+                    <p>Here are your Projects list   <a href="/projects">Click Here!</a></p>
+                </div>
+
+                
+            </div>
+        </section><!-- End Portfolio Section -->
+
+        
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Polestar Solutions</span></strong>
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">Polestar Solutions</a>
+            </div>
+        </div>
+    </footer><!-- End  Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/typed.js/typed.min.js"></script>
+    <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/assets/js/main.js"></script>
+
+
+    {{/each}}
+</body>
+
+</html>
