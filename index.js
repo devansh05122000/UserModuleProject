@@ -2,6 +2,9 @@ const express = require("express");
 const path = require("path");
 const hbs = require("hbs");
 const bodyparser = require("body-parser");
+const session = require("express-session");
+const { body, expressValidator } = require("express-validator");
+
 // require("./src/database/connection");
 
 const app = express();
@@ -16,6 +19,14 @@ hbs.registerPartials(partials_path)
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}))
+
+// app.use(expressValidator());
+app.use(session({
+    secret: "authentication",
+    resave: true,
+    saveUninitialized: true,
+}))
+
 
 app.set("content-type", "application/json");
 app.set("view engine", "hbs");
