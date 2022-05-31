@@ -68,8 +68,8 @@
                             <span>Team</span></a></li>
                     <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
                             <span>Projects</span></a></li>
-                    <div class=" d-flex justify-content-end">
-                        <li><a href="/logout" type="button" class="btn btn-primary align-self-center">Logout</a></li>
+                    <div class=" d-flex justify-content-end text-right">
+                        <a href="/logout" type="button" class="btn btn-outline-success">Logout</a>
                     </div>
                 </ul>
             </nav><!-- .nav-menu -->
@@ -77,6 +77,9 @@
     </header><!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
+    {{!-- <div class="d-flex justify-content-end" style="background-color: gray;">
+        <a href="/logout" type="button" class="btn btn-success btn-outline-dark">Logout</a>
+    </div> --}}
     <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
         <div class="hero-container" data-aos="fade-in">
             <h1>{{this.name}}</h1>
@@ -106,7 +109,7 @@
                                     <li><i class="bi bi-chevron-right"></i> <strong>Name: </strong>
                                         <span>{{this.name}}</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Email Id: </strong>
-                                        <span>{{this.id}}</span></li>
+                                        <span>{{this.email}}</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Phone: </strong>
                                         <span>{{this.contact}}</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Address: </strong>
@@ -206,8 +209,8 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">Polestar Solutions</a>
-            </div>
+                Designed by <a href="https://polestarllp.com/">Polestar Solutions</a>
+            </div> 
         </div>
     </footer><!-- End  Footer -->
 
