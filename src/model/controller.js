@@ -3,6 +3,8 @@ const router = express.Router();
 const connection = require("../database/connection");
 
 router.get("/", connection.login);
+router.get("/signup", connection.signup);
+router.post("/signup", connection.postsignup);
 router.post("/home", connection.auth);
 router.get("/userhome/:uid", connection.profile);
 // router.post("/postprofile", connection.userprofile);

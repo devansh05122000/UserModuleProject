@@ -18,12 +18,39 @@ db.connect((err) => {
 })
 
 exports.login = (req, res) => {
+    if(!req.session.user){
+    console.log("login function");
     res.render("./layouts/login");
+    }
+    else{
+        res.render("./layouts/employees");
+    }
+}
+
+exports.signup = (req, res) => {
+    res.render("./layouts/signup");
+}
+
+exports.postsignup = (req, res) => {
+    const {fname, femail, faddress, fphone, fpass} = req.body;
+    db.query("insert into userbase (name, email, address, contact, password) values(?,?,?,?,?)", [fname, femail, faddress, fphone, fpass], (err, result) => {
+        if(err)
+        {
+            console.log(err);
+            res.json("person already exists!");
+        }
+        else{
+            res.render("./layouts/login", {alert: "Signup Successfull, Please Login with your Credentials!"});
+        }
+    })
 }
 
 exports.auth = (req, res) => {
     const {id, email, password} = req.body;
+    console.log("authoriosation");
     console.log(id, email, password);
+    if(id != "" && email != "" && password != "")
+    {
     db.query("select * from userbase where uid = ?", [id], (err, result) => {
         console.log("hello", result);
         const element = result.find(result => result.uid == id);
@@ -46,11 +73,16 @@ exports.auth = (req, res) => {
         }
     })
 }
+else{
+    res.render("./layouts/login", {alert: "Invalid credentials!"});
+}
+}
 
 exports.adminhome = (req, res) => {
     // res.render("./layouts/adminhome");
+    console.log("req.session.user", req.session.user);
     if(req.session.user){
-    const aid = 3;
+    const aid = req.params.uid;
     console.log(aid);
     db.query("select * from userbase where uid = ?", [aid], (err, result) => {
         if(err)
@@ -66,6 +98,7 @@ exports.adminhome = (req, res) => {
 }
 else{
     res.end("Please Login First");
+    // res.redirect("/");
 }
 }
 
@@ -87,7 +120,9 @@ else{
 // }
 
 exports.team = (req, res) => {
-    db.query("select * from userbase where role != 'admin' and isactive = 'yes'", (err, rows) => {
+    if(req.session.user)
+    {
+    db.query("select * from userbase where isactive = 'yes'", (err, rows) => {
         if(err)
         {
             res.json(err);
@@ -97,19 +132,27 @@ exports.team = (req, res) => {
             res.render("./layouts/employees", {rows});
         }
     })
+    }
+    else{
+        res.end("please login first");
+    }
 }
 
 exports.adduser = (req, res) => {
-
-    res.render("./layouts/adduserform");
+    if(req.session.user){
+        res.render("./layouts/adduserform");
+    }
+    else{
+        res.end("please login first");
+    }
 }
 
 exports.postuseradd = (req, res) => {
-    const {id, name, email, address, phone, role, isactive} = req.body;
-    db.query("insert into userbase values(?,?,?,?,?,?,?)", [id,name,role,email,address,phone,isactive], (err, code) => {
+    const {name, email, address, phone, role, isactive, password} = req.body;
+    db.query("insert into userbase(name, role, email, address, contact, isactive, password) values(?,?,?,?,?,?,?)", [name,role,email,address,phone,isactive,password], (err, code) => {
         if(err)
         {
-            res.json(err);
+            res.json("User With Same Credentials Already There!");
         }
         else{
             res.render("./layouts/adduserform", { alert: "User Added Successfully"});
@@ -118,6 +161,7 @@ exports.postuseradd = (req, res) => {
 }
 
 exports.edit = (req, res) => {
+    if(req.session.user){
     console.log(req.params.uid);
     db.query('select * from userbase where uid = ?', [req.params.uid], (err, rows) => {
       if (!err) {
@@ -127,6 +171,10 @@ exports.edit = (req, res) => {
       }
       console.log('The data from user table: \n', rows);
     });
+    }
+    else{
+        res.end("please login first");
+    }
   }
 
   exports.update = (req, res) => {
@@ -156,6 +204,7 @@ exports.edit = (req, res) => {
       })};
 
 exports.projects = (req, res) => {
+    if(req.session.user){
     db.query("select * from projectview where isactive='yes'", (err, ans) => {
         if(err)
         {
@@ -167,9 +216,18 @@ exports.projects = (req, res) => {
         }
     })
 }
+else{
+    res.end("please login First!");
+}
+}
 
 exports.addproj = (req, res) => {
-    res.render("./layouts/addprojform");
+    if(req.session.user){
+        res.render("./layouts/addprojform");
+    }
+    else{
+        res.end("please login first");
+    }
 }
 
 exports.postprojadd = (req, res) => {
@@ -177,7 +235,7 @@ exports.postprojadd = (req, res) => {
     db.query("insert into projectview values(?,?,?,?,?,?,?,?)", [pid, projname, name, description, technology, projrole, timelines, isactive], (err, code) => {
         if(err)
         {
-            res.json(err);
+            res.json("Project with same id already exixts!");
         }
         else{
             res.render("./layouts/addprojform", { alert: "User Added Successfully"});
@@ -186,6 +244,7 @@ exports.postprojadd = (req, res) => {
 }
 
 exports.editproj = (req, res) => {
+    if(req.session.user){
     db.query('select * from projectview where pid = ?', [req.params.pid], (err, rows) => {
         if (!err) {
           res.render('./layouts/edit-proj', { rows });
@@ -194,6 +253,10 @@ exports.editproj = (req, res) => {
         }
         console.log('The data from project table: \n', rows);
       });
+    }
+    else{
+        res.end("please login first");
+    }
 }
 
 exports.updateproj = (req, res) => {
@@ -223,6 +286,7 @@ exports.deleteproj = (req, res) => {
 }
 
 exports.profile = (req, res) => {
+    if(req.session.user){
     // res.render("./layouts/uidselection");
     const uid = req.params.uid;
     console.log(uid);
@@ -237,7 +301,12 @@ exports.profile = (req, res) => {
             res.render("./layouts/userhome", {result});
         }
     })
+    }
+
     // res.redirect("/postprofile/")
+    else{
+        res.end("please login first");
+    }
 }
 
 // exports.userprofile = (req, res) => {
@@ -257,10 +326,22 @@ exports.profile = (req, res) => {
 // }
 
 exports.logout = (req,res) => {
-    req.session.destroy((err) => {
-        if(err) {
-            return console.log(err);
-        }
-        res.redirect('/');
-    });
+    console.log("logout --->>>>", req.session);
+    // req.session.destroy((err) => {
+    //     if(err) {
+    //         return console.log(err);
+    //     }
+    //     res.redirect('/');
+    // });
+req.session.destroy(err => {
+  if (err) {
+    res.status(400).send('Unable to log out')
+  } else {
+      console.log("logout -->>", req.session);
+    res.send('Logout successful');
+    // res.redirect('/');
+  }
+});
+
+
 };

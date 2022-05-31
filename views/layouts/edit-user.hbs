@@ -13,12 +13,13 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg container-fluid" style="background-color: #012345; padding-top: 20px;" aria-label="breadcrumb">
+<body  style="background-color: #DDD7D6;">
+    {{!-- <nav class="navbar navbar-expand-lg container-fluid" style="background-color: #012345; padding-top: 20px;" aria-label="breadcrumb">
   <ol >
     <li><a href="/employees" type="button" class="btn btn-primary align-self-center">View Your Team</a></li>
   </ol>
-</nav>
+</nav> --}}
+    {{> navbar}}
     {{#if alert}}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{alert}}

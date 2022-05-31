@@ -24,7 +24,10 @@ app.use(bodyparser.urlencoded({extended: true}))
 app.use(session({
     secret: "authentication",
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: {
+        expires: 60*60*1000
+    }
 }))
 
 

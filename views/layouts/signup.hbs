@@ -1,1 +1,197 @@
-    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SIGN-UP</title>
+    {{!-- <link rel="stylesheet" href="style.css"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        
+        body {
+            padding: 10px 50px;
+        }
+
+        .formdesign {
+            font-size: 20px;
+
+        }
+
+        .formdesign input {
+            width: 50%;
+            padding: 12px 20px;
+            border: 1px solid blue;
+            margin: 14px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .formerror {
+            color: red;
+        }
+
+        .but {
+            border-radius: 9px;
+            width: 100px;
+            height: 50px;
+            font-size: 25px;
+            margin: 22px 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div >
+            <div >
+                <main>
+                    <div class="container mt-5">
+                        <h3 class="display-6 text-center  text-gradient">Welcome to User Management Panel</h3>
+                        <!-- <h4 class="text-gradient text-center ">Welcome to User Management Panel </h4> -->
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5 card-bg">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Signup</h3></div>
+                                    <div class="card-body">
+                                        <form name="myForm" action="/signup" onsubmit="return validateForm()" method="post">
+                                            <div class="form-floating mb-3" id="name">
+                                                <input class="form-control" id="inputname" name="fname" type="text" placeholder="enter your Name" required/><b><span class="formerror"> </span></b>
+                                                <label for="inputname">Name</label>
+                                            </div>
+                                            <div class="form-floating mb-3" id="email">
+                                                <input class="form-control" id="inputemail" name="femail" type="email" placeholder="name@example.com" required/><b><span class="formerror"> </span></b>
+                                                <label for="inputemail">Email address</label>
+                                            </div>
+                                            <div class="form-floating mb-3" id="address">
+                                                <input class="form-control" id="inputaddress" name="faddress" type="text" placeholder="enter your Location" required/><b><span class="formerror"> </span></b>
+                                                <label for="inputaddress">Address</label>
+                                            </div>
+                                            <div class="form-floating mb-3" id="phone">
+                                                <input class="form-control" id="inputphone" name="fphone" type="phone" placeholder="Contact number" required/><b><span class="formerror"> </span></b>
+                                                <label for="inputphone">Contact</label>
+                                                {{!-- <input type="password" id="inputValidationEx2" class="form-control validate">
+                                                <label for="inputValidationEx2" data-error="wrong" data-success="right" style="width:200px;">Type your password</label> --}}
+                                            </div>
+                                            <div class="form-floating mb-3" id="pass">
+                                                <input class="form-control" id="inputpassword" name="fpass" type="password" placeholder="Create your password" required/><b><span class="formerror"> </span></b>
+                                                <label for="inputpassword">Password</label>
+                                            </div>
+                                            <div class="form-floating mb-3" id="cpass">
+                                                <input class="form-control" id="inputpassword" name="fcpass" type="password" placeholder="Re-write Your Password" required/><b><span class="formerror"> </span></b>
+                                                <label for="inputpassword">Confirm Password</label>
+                                            </div>
+                                            {{!-- <div class="form-check mb-3">
+                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
+                                            </div> --}}
+                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <a class="small" href="/login">Login Here</a>
+                                                {{!-- <a class="btn btn-primary" type="submit">Login</a> --}}
+                                                <button class="btn btn-primary" type="submit">Signup</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+    {{!-- <h1>Sign up for POLESTAR</h1>
+    <form aciton ="/myaction.php" name="myForm" onsubmit="return validateForm()" method="post">
+        <div class="formdesign" id="name">
+            Name: <input type="text" name="fname" required><b><span class="formerror"> </span></b>
+        </div>
+
+        <div class="formdesign" id="email">
+            Email: <input type="email" name="femail" required><b><span class="formerror"> </span></b>
+        </div>
+
+        <div class="formdesign" id="phone">
+            Phone: <input type="phone" name="fphone" required><b><span class="formerror"></span></b>
+        </div>
+
+        <div class="formdesign" id="pass">
+            Password: <input type="password" name="fpass" required><b><span class="formerror"></span></b>
+        </div>
+
+        <div class="formdesign" id="cpass">
+            Confirm Password: <input type="password" name="fcpass" required><b><span class="formerror"></span></b>
+        </div>
+
+        <input class="but" type="submit" value="Submit">
+
+    </form> --}}
+</body>
+{{!-- <script src="script.js"></script> --}}
+<script>
+    function clearErrors(){
+
+    errors = document.getElementsByClassName('formerror');
+    for(let item of errors)
+    {
+        item.innerHTML = "";
+    }
+
+
+}
+function seterror(id, error){
+    //sets error inside tag of id 
+    element = document.getElementById(id);
+    element.getElementsByClassName('formerror')[0].innerHTML = error;
+
+}
+
+function validateForm(){
+    var returnval = true;
+    clearErrors();
+
+    //perform validation and if validation fails, set the value of returnval to false
+    var name = document.forms['myForm']["fname"].value;
+    if (name.length<5){
+        seterror("name", "*Length of name is too short");
+        returnval = false;
+    }
+
+    if (name.length == 0){
+        seterror("name", "*Length of name cannot be zero!");
+        returnval = false;
+    }
+
+    var email = document.forms['myForm']["femail"].value;
+    if (email.length>15){
+        seterror("email", "*Email length is too long");
+        returnval = false;
+    }
+
+    var phone = document.forms['myForm']["fphone"].value;
+    if (phone.length != 10){
+        seterror("phone", "*Phone number should be of 10 digits!");
+        returnval = false;
+    }
+
+    var password = document.forms['myForm']["fpass"].value;
+    if (password.length < 6){
+
+        
+        seterror("pass", "*Password should be atleast 6 characters long!");
+        returnval = false;
+    }
+
+    var cpassword = document.forms['myForm']["fcpass"].value;
+    if (cpassword != password){
+        seterror("cpass", "*Password and Confirm password should match!");
+        returnval = false;
+    }
+
+    return returnval;
+}
+
+
+</script>
+
+</html>
